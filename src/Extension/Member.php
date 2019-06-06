@@ -95,7 +95,7 @@ class Member extends DataExtension
 
         $fields->removeByName('TOTPToken');
         $fields->removeByName('BackupTokens');
-        if (!(Config::inst()->get(Authenticator::class, 'admins_can_disable')
+        if ((Config::inst()->get(Authenticator::class, 'admins_can_disable')
             && $this->owner->Has2FA && Permission::check('ADMIN'))
         ) {
             $fields->removeByName('Has2FA');
